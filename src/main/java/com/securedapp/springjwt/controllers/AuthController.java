@@ -113,6 +113,12 @@ public class AuthController {
           roles.add(modRole);
 
           break;
+        case "worker":
+          Role workerRole = roleRepository.findByName(ERole.ROLE_WORKER)
+                  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+          roles.add(workerRole);
+
+          break;
         default:
           Role userRole = roleRepository.findByName(ERole.ROLE_USER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
