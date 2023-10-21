@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users", 
@@ -14,6 +16,8 @@ import jakarta.validation.constraints.Size;
       @UniqueConstraint(columnNames = "username"),
       @UniqueConstraint(columnNames = "email") 
     })
+@Getter
+@Setter
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +36,36 @@ public class User {
   @Size(max = 120)
   private String password;
 
+  @Size(max = 20)
+  private String phone;
+
+  @Size(max = 100)
+  private String address;
+
+  @Size(max= 100)
+  private String about;
+
+  @Size(max = 30)
+  private String linkedin;
+
+  @Size(max = 30)
+  private String instagram;
+
+  @Size(max = 30)
+  private String youtube;
+
+  @Size(max = 30)
+  private String facebook;
+
+  @Size(max = 30)
+  private String image;
+
+  @Size(max = 30)
+  private String firstname;
+
+  @Size(max = 30)
+  private String lastname;
+
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 
@@ -47,43 +81,4 @@ public class User {
     this.password = password;
   }
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public Set<Role> getRoles() {
-    return roles;
-  }
-
-  public void setRoles(Set<Role> roles) {
-    this.roles = roles;
-  }
 }
