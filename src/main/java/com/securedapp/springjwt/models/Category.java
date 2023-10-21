@@ -1,13 +1,12 @@
 package com.securedapp.springjwt.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
+@Entity
 @Getter
 @Setter
 public class Category {
@@ -16,4 +15,10 @@ public class Category {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private List<Service> serviceList;
+
+    @OneToMany(mappedBy = "category")
+    private List<Announce> announceList;
 }

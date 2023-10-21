@@ -1,13 +1,13 @@
 package com.securedapp.springjwt.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
+@Entity
 @Getter
 @Setter
 public class Service {
@@ -20,4 +20,17 @@ public class Service {
     private String description;
     private String image;
     private String phone;
+
+    @OneToMany(mappedBy = "service")
+    private List<Announce> announceList;
+
+    @ManyToOne
+    @JoinColumn(name="city_id", nullable=false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable=false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Category category;
 }
