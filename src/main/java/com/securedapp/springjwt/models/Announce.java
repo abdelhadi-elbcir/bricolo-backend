@@ -4,14 +4,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class Service {
+public class Announce {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
-    private double price;
-    private String description;
+    private String body;
     private String image;
-    private String phone;
 }
