@@ -5,29 +5,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
-public class Service {
+public class Announce {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
-    private double price;
-    private String description;
+    private String body;
     private String image;
-    private String phone;
-
-    @OneToMany(mappedBy = "service")
-    private List<Announce> announceList;
 
     @ManyToOne
-    @JoinColumn(name="city_id", nullable=false)
+    @JoinColumn(name="service_id", nullable=false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private City city;
+    private Service service;
 
     @ManyToOne
     @JoinColumn(name="category_id", nullable=false)

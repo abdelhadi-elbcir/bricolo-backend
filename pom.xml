@@ -86,7 +86,11 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+<<<<<<< HEAD
 			<version>1.18.20</version>
+=======
+			<version>1.18.30</version>
+>>>>>>> 86f62d8aecd0b5eec3889a8f54365c2ac990432a
 			<scope>provided</scope>
 		</dependency>
 
