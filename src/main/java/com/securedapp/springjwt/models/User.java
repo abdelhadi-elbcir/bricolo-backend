@@ -1,6 +1,7 @@
 package com.securedapp.springjwt.models;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -65,6 +66,18 @@ public class User {
 
   @Size(max = 30)
   private String lastname;
+
+  @OneToMany(mappedBy = "user")
+  private List<Blog> blogList;
+
+  @OneToMany(mappedBy = "user")
+  private List<Comment> commentList;
+
+  @OneToMany(mappedBy = "user")
+  private List<Message> messageList;
+
+  @OneToMany(mappedBy = "user")
+  private List<Ratting> rattingList;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 

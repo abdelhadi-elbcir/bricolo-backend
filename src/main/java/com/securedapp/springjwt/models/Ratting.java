@@ -1,9 +1,6 @@
 package com.securedapp.springjwt.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +13,8 @@ public class Ratting {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int stars;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 }
