@@ -20,6 +20,36 @@ public class SignupRequest {
   @Size(min = 6, max = 40)
   private String password;
 
+  @Size(max = 20)
+  private String phone;
+
+  @Size(max = 100)
+  private String address;
+
+  @Size(max= 100)
+  private String about;
+
+  @Size(max = 30)
+  private String linkedin;
+
+  @Size(max = 30)
+  private String instagram;
+
+  @Size(max = 30)
+  private String youtube;
+
+  @Size(max = 30)
+  private String facebook;
+
+  @Size(max = 30)
+  private String image;
+
+  @Size(max = 30)
+  private String firstname;
+
+  @Size(max = 30)
+  private String lastname;
+
   public String getUsername() {
     return username;
   }
@@ -50,5 +80,85 @@ public class SignupRequest {
 
   public void setRole(Set<String> role) {
     this.role = role;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public String getAbout() {
+    return about;
+  }
+
+  public void setAbout(String about) {
+    this.about = about;
+  }
+
+  public String getLinkedin() {
+    return linkedin;
+  }
+
+  public void setLinkedin(String linkedin) {
+    this.linkedin = linkedin;
+  }
+
+  public String getInstagram() {
+    return instagram;
+  }
+
+  public void setInstagram(String instagram) {
+    this.instagram = instagram;
+  }
+
+  public String getYoutube() {
+    return youtube;
+  }
+
+  public void setYoutube(String youtube) {
+    this.youtube = youtube;
+  }
+
+  public String getFacebook() {
+    return facebook;
+  }
+
+  public void setFacebook(String facebook) {
+    this.facebook = facebook;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public String getFirstname() {
+    return firstname;
+  }
+
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
   }
 }

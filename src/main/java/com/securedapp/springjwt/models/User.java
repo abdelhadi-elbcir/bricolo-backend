@@ -88,6 +88,22 @@ public class User {
   public User() {
   }
 
+  public User(String username, String email, String password, String phone, String address, String about, String linkedin, String instagram, String youtube, String facebook, String image, String firstname, String lastname) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.phone = phone;
+    this.address = address;
+    this.about = about;
+    this.linkedin = linkedin;
+    this.instagram = instagram;
+    this.youtube = youtube;
+    this.facebook = facebook;
+    this.image = image;
+    this.firstname = firstname;
+    this.lastname = lastname;
+  }
+
   public User(String username, String email, String password) {
     this.username = username;
     this.email = email;
