@@ -1,4 +1,4 @@
-package com.securedapp.springjwt.controllers.smtp;
+package com.securedapp.springjwt.models;
 
 public class EmailDetails {
     private String recipient;

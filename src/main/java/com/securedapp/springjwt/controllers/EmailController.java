@@ -1,8 +1,8 @@
 package com.securedapp.springjwt.controllers;
 
 
-import com.securedapp.springjwt.controllers.smtp.EmailDetails;
-import com.securedapp.springjwt.controllers.smtp.EmailService;
+import com.securedapp.springjwt.models.EmailDetails;
+import com.securedapp.springjwt.services.facade.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +24,11 @@ public class EmailController {
         return status;
     }
 
-    // Sending email with attachment
     @PostMapping("/sendMailWithAttachment")
     public String sendMailWithAttachment(
             @RequestBody EmailDetails details)
     {
-        String status
-                = emailService.sendMailWithAttachment(details);
+        String status = emailService.sendMailWithAttachment(details);
 
         return status;
     }

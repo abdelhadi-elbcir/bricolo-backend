@@ -1,6 +1,9 @@
-package com.securedapp.springjwt.controllers.smtp;
+package com.securedapp.springjwt.services.impl;
 
 import java.io.File;
+
+import com.securedapp.springjwt.models.EmailDetails;
+import com.securedapp.springjwt.services.facade.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Value;
