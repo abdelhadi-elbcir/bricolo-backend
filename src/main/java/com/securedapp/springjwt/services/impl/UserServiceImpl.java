@@ -1,33 +1,37 @@
 package com.securedapp.springjwt.services.impl;
 
 import com.securedapp.springjwt.models.User;
+import com.securedapp.springjwt.repository.UserRepository;
 import com.securedapp.springjwt.services.facade.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
-    @Override
-    public User create(User user) {
-        return null;
-    }
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public User update(User user, Long id) {
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public String delete(Long id) {
-        return null;
+        userRepository.deleteById(id);
+        return  "user deleted!";
     }
 
     @Override
     public User getUser(Long id) {
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<User> getListUsers() {
-        return null;
+        return userRepository.findAll();
     }
 }
