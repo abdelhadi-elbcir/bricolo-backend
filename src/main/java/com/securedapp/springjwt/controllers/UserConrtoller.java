@@ -1,6 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
-import com.securedapp.springjwt.models.User;
+import com.securedapp.springjwt.dto.UserDto;
 import com.securedapp.springjwt.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/userDto")
 public class UserConrtoller {
 
     @Autowired
     private UserServiceImpl userServiceImpl ;
 
     @PutMapping("/edit/{id}")
-    public User update(@RequestBody User user, @PathVariable  Long id) {
-        return userServiceImpl.update(user, id);
+    public UserDto update(@RequestBody UserDto userDto, @PathVariable  Long id) {
+        return userServiceImpl.update(userDto, id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -25,12 +25,12 @@ public class UserConrtoller {
     }
 
     @GetMapping("/get/{id}")
-    public User getUser(@PathVariable Long id) {
+    public UserDto getUser(@PathVariable Long id) {
         return userServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
-    public List<User> getListUsers() {
+    public List<UserDto> getListUsers() {
         return userServiceImpl.getList();
     }
 }

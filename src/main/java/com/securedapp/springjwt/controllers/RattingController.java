@@ -1,6 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
-import com.securedapp.springjwt.models.Ratting;
+import com.securedapp.springjwt.dto.RattingDto;
 import com.securedapp.springjwt.services.impl.RattingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +15,13 @@ public class RattingController {
     private RattingServiceImpl rattingServiceImpl;
 
     @PostMapping("/add")
-    public Ratting create(@RequestBody Ratting ratting) {
-        return rattingServiceImpl.create(ratting);
+    public RattingDto create(@RequestBody RattingDto rattingDto) {
+        return rattingServiceImpl.create(rattingDto);
     }
 
     @PutMapping("/edit/{id}")
-    public Ratting update(@RequestBody Ratting ratting,@PathVariable Long id) {
-        return rattingServiceImpl.update(ratting, id);
+    public RattingDto update(@RequestBody RattingDto rattingDto,@PathVariable Long id) {
+        return rattingServiceImpl.update(rattingDto, id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -30,12 +30,12 @@ public class RattingController {
     }
 
     @GetMapping("/get/{id}")
-    public Ratting getRatting(@PathVariable Long id) {
+    public RattingDto getRatting(@PathVariable Long id) {
         return rattingServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
-    public List<Ratting> getListRattings() {
+    public List<RattingDto> getListRattings() {
         return rattingServiceImpl.getList();
     }
     

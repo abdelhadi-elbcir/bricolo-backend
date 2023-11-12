@@ -1,6 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
-import com.securedapp.springjwt.models.Blog;
+import com.securedapp.springjwt.dto.BlogDto;
 import com.securedapp.springjwt.services.impl.BlogServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +14,13 @@ public class BlogController {
     private BlogServiceImpl blogServiceImpl;
 
     @PostMapping("/add")
-    public Blog create(@RequestBody Blog blog) {
-        return blogServiceImpl.create(blog);
+    public BlogDto create(@RequestBody BlogDto blogDto) {
+        return blogServiceImpl.create(blogDto);
     }
 
     @PutMapping("/edit/{id}")
-    public Blog update(@RequestBody Blog blog,@PathVariable Long id) {
-        return blogServiceImpl.update(blog, id);
+    public BlogDto update(@RequestBody BlogDto blogDto,@PathVariable Long id) {
+        return blogServiceImpl.update(blogDto, id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -29,12 +29,12 @@ public class BlogController {
     }
 
     @GetMapping("/get/{id}")
-    public Blog getBlog(@PathVariable Long id) {
+    public BlogDto getBlog(@PathVariable Long id) {
         return blogServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
-    public List<Blog> getListBlogs() {
+    public List<BlogDto> getListBlogs() {
         return blogServiceImpl.getList();
     }
 

@@ -1,6 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
-import com.securedapp.springjwt.models.Message;
+import com.securedapp.springjwt.dto.MessageDto;
 import com.securedapp.springjwt.services.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +12,13 @@ import java.util.List;
 public class MessageController {
 
     @PostMapping("/add")
-    public Message create(@RequestBody Message message) {
-        return messageServiceImpl.create(message);
+    public MessageDto create(@RequestBody MessageDto messageDto) {
+        return messageServiceImpl.create(messageDto);
     }
 
     @PutMapping("/edit/{id}")
-    public Message update(@RequestBody Message message,@PathVariable Long id) {
-        return messageServiceImpl.update(message, id);
+    public MessageDto update(@RequestBody MessageDto messageDto,@PathVariable Long id) {
+        return messageServiceImpl.update(messageDto, id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -27,12 +27,12 @@ public class MessageController {
     }
 
     @GetMapping("/get/{id}")
-    public Message getMessage(@PathVariable Long id) {
+    public MessageDto getMessage(@PathVariable Long id) {
         return messageServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
-    public List<Message> getListMessages() {
+    public List<MessageDto> getListMessages() {
         return messageServiceImpl.getList();
     }
 

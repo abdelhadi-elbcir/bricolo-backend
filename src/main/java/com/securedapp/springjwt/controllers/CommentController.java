@@ -1,6 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
-import com.securedapp.springjwt.models.Comment;
+import com.securedapp.springjwt.dto.CommentDto;
 import com.securedapp.springjwt.services.impl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +11,13 @@ import java.util.List;
 @RequestMapping("/api/cmt")
 public class CommentController {
     @PostMapping("/add")
-    public Comment create(@RequestBody Comment comment) {
-        return commentServiceImpl.create(comment);
+    public CommentDto create(@RequestBody CommentDto commentDto) {
+        return commentServiceImpl.create(commentDto);
     }
 
     @PutMapping("/edit/{id}")
-    public Comment update(@RequestBody Comment comment, @PathVariable Long id) {
-        return commentServiceImpl.update(comment, id);
+    public CommentDto update(@RequestBody CommentDto commentDto, @PathVariable Long id) {
+        return commentServiceImpl.update(commentDto, id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -26,12 +26,12 @@ public class CommentController {
     }
 
     @GetMapping("/get/{id}")
-    public Comment getComment(@PathVariable Long id) {
+    public CommentDto getComment(@PathVariable Long id) {
         return commentServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
-    public List<Comment> getListComments() {
+    public List<CommentDto> getListComments() {
         return commentServiceImpl.getList();
     }
 

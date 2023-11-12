@@ -1,5 +1,6 @@
 package com.securedapp.springjwt.services.impl;
 
+import com.securedapp.springjwt.dto.UserDto;
 import com.securedapp.springjwt.models.User;
 import com.securedapp.springjwt.repository.UserRepository;
 import com.securedapp.springjwt.services.facade.UserService;
@@ -15,28 +16,27 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User create(User user) {
+    public UserDto create(UserDto userDto) {
         return null;
     }
 
     @Override
-    public User update(User user, Long id) {
-        return userRepository.findById(id).orElse(null);
+    public UserDto update(UserDto userDto, Long id) {
+        return null;
     }
 
     @Override
     public String delete(Long id) {
-        userRepository.deleteById(id);
-        return  "user deleted!";
+        return null;
     }
 
     @Override
-    public User getItem(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public UserDto getItem(Long id) {
+        return null;
     }
 
     @Override
-    public List<User> getList() {
-        return userRepository.findAll();
+    public List<UserDto> getList() {
+        return null;
     }
 }
