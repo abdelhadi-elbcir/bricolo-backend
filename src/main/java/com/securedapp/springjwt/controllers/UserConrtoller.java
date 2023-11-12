@@ -15,7 +15,7 @@ public class UserConrtoller {
     private UserServiceImpl userServiceImpl ;
 
     @PutMapping("/edit/{id}")
-    public S update(@RequestBody User user, @PathVariable  Long id) {
+    public User update(@RequestBody User user, @PathVariable  Long id) {
         return userServiceImpl.update(user, id);
     }
 
@@ -26,11 +26,11 @@ public class UserConrtoller {
 
     @GetMapping("/get/{id}")
     public User getUser(@PathVariable Long id) {
-        return userServiceImpl.getUser(id);
+        return userServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
     public List<User> getListUsers() {
-        return userServiceImpl.getListUsers();
+        return userServiceImpl.getList();
     }
 }

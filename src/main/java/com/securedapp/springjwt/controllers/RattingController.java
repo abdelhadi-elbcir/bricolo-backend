@@ -31,12 +31,12 @@ public class RattingController {
 
     @GetMapping("/get/{id}")
     public Ratting getRatting(@PathVariable Long id) {
-        return rattingServiceImpl.getRatting(id);
+        return rattingServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
     public List<Ratting> getListRattings() {
-        return rattingServiceImpl.getListRattings();
+        return rattingServiceImpl.getList();
     }
     
 }

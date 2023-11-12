@@ -39,12 +39,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message getMessage(Long id) {
+    public Message getItem(Long id) {
         return MessageRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Message> getListMessages() {
+    public List<Message> getList() {
         return MessageRepository.findAll();
     }
 }

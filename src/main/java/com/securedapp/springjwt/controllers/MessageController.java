@@ -28,12 +28,12 @@ public class MessageController {
 
     @GetMapping("/get/{id}")
     public Message getMessage(@PathVariable Long id) {
-        return messageServiceImpl.getMessage(id);
+        return messageServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
     public List<Message> getListMessages() {
-        return messageServiceImpl.getListMessages();
+        return messageServiceImpl.getList();
     }
 
     @Autowired

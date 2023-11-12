@@ -14,7 +14,6 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String title;
     private double price;
     private String description;
@@ -33,4 +32,8 @@ public class Service {
     @JoinColumn(name="category_id", nullable=false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 }

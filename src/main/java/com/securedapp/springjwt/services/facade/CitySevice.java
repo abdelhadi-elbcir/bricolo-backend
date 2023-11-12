@@ -1,4 +1,6 @@
 package com.securedapp.springjwt.services.facade;
 
-public interface CitySevice {
+import com.securedapp.springjwt.dto.CityDto;
+
+public interface CitySevice extends  BaseInterface<CityDto>{
 }

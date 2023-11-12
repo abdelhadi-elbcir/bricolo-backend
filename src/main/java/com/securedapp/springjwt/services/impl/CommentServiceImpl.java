@@ -40,12 +40,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment getComment(Long id) {
+    public Comment getItem(Long id) {
         return commentRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Comment> getListComments() {
+    public List<Comment> getList() {
         return commentRepository.findAll();
     }
 }

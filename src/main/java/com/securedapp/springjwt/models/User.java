@@ -3,7 +3,6 @@ package com.securedapp.springjwt.models;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -78,6 +77,10 @@ public class User {
 
   @OneToMany(mappedBy = "user")
   private List<Ratting> rattingList;
+
+
+  @OneToMany(mappedBy = "user")
+  private List<Ratting> servicesList;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 

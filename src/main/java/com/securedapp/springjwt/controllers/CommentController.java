@@ -27,12 +27,12 @@ public class CommentController {
 
     @GetMapping("/get/{id}")
     public Comment getComment(@PathVariable Long id) {
-        return commentServiceImpl.getComment(id);
+        return commentServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
     public List<Comment> getListComments() {
-        return commentServiceImpl.getListComments();
+        return commentServiceImpl.getList();
     }
 
     @Autowired

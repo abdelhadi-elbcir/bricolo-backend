@@ -40,12 +40,12 @@ public class RattingServiceImpl implements RattingService {
     }
 
     @Override
-    public Ratting getRatting(Long id) {
+    public Ratting getItem(Long id) {
         return rattingRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Ratting> getListRattings() {
+    public List<Ratting> getList() {
         return rattingRepository.findAll();
     }
 }

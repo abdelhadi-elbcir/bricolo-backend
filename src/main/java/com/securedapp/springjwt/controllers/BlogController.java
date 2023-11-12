@@ -10,6 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/blog")
 public class BlogController {
+    @Autowired
+    private BlogServiceImpl blogServiceImpl;
 
     @PostMapping("/add")
     public Blog create(@RequestBody Blog blog) {
@@ -28,14 +30,12 @@ public class BlogController {
 
     @GetMapping("/get/{id}")
     public Blog getBlog(@PathVariable Long id) {
-        return blogServiceImpl.getBlog(id);
+        return blogServiceImpl.getItem(id);
     }
 
     @GetMapping("/all")
     public List<Blog> getListBlogs() {
-        return blogServiceImpl.getListBlogs();
+        return blogServiceImpl.getList();
     }
 
-    @Autowired
-    private BlogServiceImpl blogServiceImpl;
 }

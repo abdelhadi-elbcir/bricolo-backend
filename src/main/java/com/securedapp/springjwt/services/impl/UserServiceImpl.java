@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    public User create(User user) {
+        return null;
+    }
+
+    @Override
     public User update(User user, Long id) {
         return userRepository.findById(id).orElse(null);
     }
@@ -26,12 +31,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(Long id) {
+    public User getItem(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<User> getListUsers() {
+    public List<User> getList() {
         return userRepository.findAll();
     }
 }

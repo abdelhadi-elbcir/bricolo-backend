@@ -41,12 +41,12 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Blog getBlog(Long id) {
+    public Blog getItem(Long id) {
         return blogRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Blog> getListBlogs() {
+    public List<Blog> getList() {
         return blogRepository.findAll();
     }
 }
