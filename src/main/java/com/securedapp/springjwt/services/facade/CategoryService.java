@@ -1,4 +1,6 @@
 package com.securedapp.springjwt.services.facade;
 
-public interface CategoryService {
+import com.securedapp.springjwt.dto.CategoryDto;
+
+public interface CategoryService extends  BaseInterface<CategoryDto>{
 }

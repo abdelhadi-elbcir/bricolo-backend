@@ -1,4 +1,6 @@
 package com.securedapp.springjwt.services.facade;
 
-public interface FavoriteService {
+import com.securedapp.springjwt.dto.FavoriteDto;
+
+public interface FavoriteService extends  BaseInterface<FavoriteDto> {
 }

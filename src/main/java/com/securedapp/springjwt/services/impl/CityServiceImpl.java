@@ -4,14 +4,14 @@ import com.securedapp.springjwt.dto.CityDto;
 import com.securedapp.springjwt.mappers.CityMapper;
 import com.securedapp.springjwt.models.City;
 import com.securedapp.springjwt.repository.CityRepository;
-import com.securedapp.springjwt.services.facade.CitySevice;
+import com.securedapp.springjwt.services.facade.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CityServiceImpl implements CitySevice {
+public class CityServiceImpl implements CityService {
 
     @Autowired
     private  CityRepository cityRepository;

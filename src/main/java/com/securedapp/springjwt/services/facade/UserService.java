@@ -1,9 +1,8 @@
 package com.securedapp.springjwt.services.facade;
 
-import com.securedapp.springjwt.models.User;
+import com.securedapp.springjwt.dto.UserDto;
 
-import java.util.List;
 
-public interface UserService extends BaseInterface<User>{
+public interface UserService extends BaseInterface<UserDto>{
 
 }

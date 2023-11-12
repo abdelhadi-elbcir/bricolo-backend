@@ -1,11 +1,14 @@
 package com.securedapp.springjwt.services.impl;
 
+import com.securedapp.springjwt.dto.CommentDto;
+import com.securedapp.springjwt.mappers.CommentMapper;
 import com.securedapp.springjwt.models.Comment;
 import com.securedapp.springjwt.repository.CommentRepository;
 import com.securedapp.springjwt.services.facade.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,18 +16,24 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentRepository commentRepository;
-
+    @Autowired
+    private CommentMapper commentMapper;
     @Override
-    public Comment create(Comment comment) {
-        return commentRepository.save(comment);
+    public CommentDto create(CommentDto commentDto) {
+        return commentMapper.toDto(
+                commentRepository.save(
+                      commentMapper.toEntity(commentDto)
+                )
+        );
     }
 
     @Override
-    public Comment update(Comment comment, Long id) {
+    public CommentDto update(CommentDto commentDto, Long id) {
         Comment commentToUpdate = commentRepository.findById(id).orElse(null);
+        Comment newComment = commentMapper.toEntity(commentDto);
         if(commentToUpdate != null){
-
-            return  commentToUpdate;
+            commentToUpdate.setText(newComment.getText());
+            return  commentMapper.toDto(commentToUpdate);
         }
         return  null;
     }
@@ -34,18 +43,25 @@ public class CommentServiceImpl implements CommentService {
         Comment commentToDelete = commentRepository.findById(id).orElse(null);
         if(commentToDelete != null){
             commentRepository.deleteById(commentToDelete.getId());
-            return  "Comment deleted !";
+            return  "CommentDto deleted !";
         }
-        return  "Comment doesn't exist !";
+        return  "CommentDto doesn't exist !";
     }
 
     @Override
-    public Comment getItem(Long id) {
-        return commentRepository.findById(id).orElse(null);
+    public CommentDto getItem(Long id) {
+        if(commentRepository.findById(id).isPresent())
+           return commentMapper.toDto(commentRepository.findById(id).get());
+        return  null;
     }
 
     @Override
-    public List<Comment> getList() {
-        return commentRepository.findAll();
+    public List<CommentDto> getList() {
+        List<Comment> commentList = commentRepository.findAll();
+        List<CommentDto> commentDtoList = new ArrayList<>();
+        for (Comment comment : commentList)
+            if(comment != null)
+                commentDtoList.add(commentMapper.toDto(comment));
+        return commentDtoList;
     }
 }

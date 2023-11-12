@@ -1,5 +1,7 @@
 package com.securedapp.springjwt.services.facade;
 
 
-public interface ServiceService {
+import com.securedapp.springjwt.dto.ServiceDto;
+
+public interface ServiceService extends  BaseInterface<ServiceDto> {
 }
