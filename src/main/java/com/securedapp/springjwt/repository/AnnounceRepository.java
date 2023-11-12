@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AnounceRepository extends JpaRepository<Announce, Long> {
+public interface AnnounceRepository extends JpaRepository<Announce, Long> {
 }
