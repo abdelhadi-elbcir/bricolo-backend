@@ -33,6 +33,7 @@ public class RattingServiceImpl implements RattingService {
         Ratting rattingToUpdate = rattingRepository.findById(id).orElse(null);
         if(rattingToUpdate != null){
             rattingToUpdate.setStars(rattingDto.getStars());
+            rattingRepository.save(rattingToUpdate);
             return  rattingMapper.toDto(rattingToUpdate);
         }
         return null;

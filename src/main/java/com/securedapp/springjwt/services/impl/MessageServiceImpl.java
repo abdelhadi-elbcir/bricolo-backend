@@ -32,6 +32,7 @@ public class MessageServiceImpl implements MessageService {
         Message messageToUpdate = messageRepository.findById(id).orElse(null);
         if(messageToUpdate != null){
             messageToUpdate.setText(messageDto.getText());
+            messageRepository.save(messageToUpdate);
             return  messageMapper.toDto(messageToUpdate);
         }
         return null;

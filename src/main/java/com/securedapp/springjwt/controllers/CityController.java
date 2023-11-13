@@ -26,7 +26,7 @@ public class CityController {
         return cityServiceImpl.update(cityDto, id);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         return cityServiceImpl.delete(id);
     }

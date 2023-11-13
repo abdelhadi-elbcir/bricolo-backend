@@ -11,6 +11,7 @@ public class CityMapper {
 
     public CityDto toDto(City city){
         return new CityDto(
+                city.getId(),
                 city.getName(),
                 city.getServiceList()
         );

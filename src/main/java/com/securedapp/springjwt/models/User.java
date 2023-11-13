@@ -80,7 +80,7 @@ public class User {
 
 
   @OneToMany(mappedBy = "user")
-  private List<Ratting> servicesList;
+  private List<Service> servicesList;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 

@@ -12,9 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDto {
 
-  private String username;
-  private String email;
-  private String password;
   private String phone;
   private String address;
   private String about;
@@ -30,8 +27,5 @@ public class UserDto {
   private List<Message> messageList;
   private List<Ratting> rattingList;
   private List<Service> servicesList;
-
-
-
 
 }

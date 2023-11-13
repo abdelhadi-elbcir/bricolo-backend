@@ -30,12 +30,11 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogDto update(BlogDto blogDto, Long id) {
-       Blog newBlog = blogMapper.toEntity(blogDto);
        Blog blogToUpdate =  blogRepository.findById(id).orElse(null);
        if(blogToUpdate != null){
-           blogToUpdate.setBody(newBlog.getBody());
-           blogToUpdate.setImage(newBlog.getImage());
-           blogToUpdate.setTitle(newBlog.getTitle());
+           blogToUpdate.setBody(blogDto.getBody());
+           blogToUpdate.setImage(blogDto.getImage());
+           blogToUpdate.setTitle(blogDto.getTitle());
            blogRepository.save(blogToUpdate);
            return  blogMapper.toDto(blogToUpdate);
        }

@@ -2,6 +2,7 @@ package com.securedapp.springjwt.dto;
 
 import com.securedapp.springjwt.models.Announce;
 import com.securedapp.springjwt.models.Category;
+import com.securedapp.springjwt.models.City;
 import com.securedapp.springjwt.models.User;
 import lombok.*;
 
@@ -17,7 +18,7 @@ public class ServiceDto {
     private String image;
     private String phone;
     private List<Announce> announceList;
-    private CityDto city;
+    private City city;
     private Category category;
     private User user;
 }
