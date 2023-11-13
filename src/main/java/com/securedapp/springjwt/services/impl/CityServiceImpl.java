@@ -30,13 +30,23 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public CityDto update(CityDto cityDto, Long id) {
-        return null;
+        City city = cityRepository.findById(id).orElse(null);
+        if(city != null){
+            city.setName(cityDto.getName());
+            city.setServiceList(cityDto.getServiceList());
+            cityRepository.save(city);
+            return  cityMapper.toDto(city);
+        }
+        return  null;
     }
 
     @Override
     public String delete(Long id) {
-        cityRepository.deleteById(id);
-        return "done";
+        if(cityRepository.findById(id).isPresent()){
+            cityRepository.deleteById(id);
+            return  "City deleted !";
+        }
+        return "City not found !";
     }
 
     @Override

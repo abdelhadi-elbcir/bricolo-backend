@@ -6,7 +6,6 @@ import com.securedapp.springjwt.models.Service;
 import com.securedapp.springjwt.repository.ServiceRepository;
 import com.securedapp.springjwt.services.facade.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +38,8 @@ public class ServiceServiceImpl implements ServiceService {
             service.setPrice(serviceDto.getPrice());
             service.setTitle(serviceDto.getTitle());
             service.setUser(serviceDto.getUser());
+            serviceRepository.save(service);
+            return serviceMapper.toDto(service);
         }
         return  null;
     }

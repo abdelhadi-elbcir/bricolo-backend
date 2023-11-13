@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
             user.setYoutube(user.getYoutube());
             user.setInstagram(userDto.getInstagram());
             user.setLinkedin(userDto.getLinkedin());
+            userRepository.save(user);
             return userMapper.toDto(user);
         }
         return null;

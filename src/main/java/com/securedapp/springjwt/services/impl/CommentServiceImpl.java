@@ -33,6 +33,7 @@ public class CommentServiceImpl implements CommentService {
         Comment newComment = commentMapper.toEntity(commentDto);
         if(commentToUpdate != null){
             commentToUpdate.setText(newComment.getText());
+            commentRepository.save(commentToUpdate);
             return  commentMapper.toDto(commentToUpdate);
         }
         return  null;

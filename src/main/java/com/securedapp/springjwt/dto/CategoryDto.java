@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryDto {
+    private Long id;
     private String name;
     private List<Service> serviceList;
     private List<Announce> announceList;

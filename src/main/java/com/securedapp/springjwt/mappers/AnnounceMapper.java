@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnnounceMapper {
 
-    public AnnounceDto toDot(Announce announce){
+    public AnnounceDto toDto(Announce announce){
         return  new AnnounceDto(
                 announce.getTitle(),
                 announce.getBody(),

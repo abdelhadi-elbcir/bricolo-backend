@@ -21,7 +21,7 @@ public class AnnounceServiceImpl implements AnnounceService {
 
     @Override
     public AnnounceDto create(AnnounceDto announceDto) {
-        return announceMapper.toDot(
+        return announceMapper.toDto(
                 announceRepository.save(
                         announceMapper.toEntity(announceDto)
                 )
@@ -37,6 +37,8 @@ public class AnnounceServiceImpl implements AnnounceService {
             announce.setImage(announceDto.getImage());
             announce.setCategory(announceDto.getCategory());
             announce.setService(announceDto.getService());
+            announceRepository.save(announce);
+            return  announceMapper.toDto(announce);
         }
         return  null;
     }
@@ -50,7 +52,7 @@ public class AnnounceServiceImpl implements AnnounceService {
     @Override
     public AnnounceDto getItem(Long id) {
         if(announceRepository.findById(id).isPresent())
-            return  announceMapper.toDot(announceRepository.findById(id).get());
+            return  announceMapper.toDto(announceRepository.findById(id).get());
         return  null;
     }
 
@@ -60,7 +62,7 @@ public class AnnounceServiceImpl implements AnnounceService {
         List<AnnounceDto> announceDtoList = new ArrayList<>();
         for (Announce announce : announceList)
             if(announce != null)
-                announceDtoList.add(announceMapper.toDot(announce));
+                announceDtoList.add(announceMapper.toDto(announce));
         return  announceDtoList;
     }
 }
