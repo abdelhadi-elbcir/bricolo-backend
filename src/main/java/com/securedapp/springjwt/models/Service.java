@@ -36,4 +36,7 @@ public class Service {
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     private User user;
+
+    @OneToMany(mappedBy = "service")
+    private List<Favorite> favoriteList;
 }

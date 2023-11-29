@@ -82,6 +82,11 @@ public class User {
   @OneToMany(mappedBy = "user")
   private List<Service> servicesList;
 
+  @OneToMany(mappedBy = "user")
+  private List<Favorite> favoriteList;
+
+
+
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 

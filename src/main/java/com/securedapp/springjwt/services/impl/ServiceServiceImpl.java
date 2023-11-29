@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
 
     @Autowired

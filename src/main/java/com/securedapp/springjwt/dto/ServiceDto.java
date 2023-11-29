@@ -1,5 +1,6 @@
 package com.securedapp.springjwt.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.securedapp.springjwt.models.Announce;
 import com.securedapp.springjwt.models.Category;
 import com.securedapp.springjwt.models.City;
@@ -18,7 +19,10 @@ public class ServiceDto {
     private String image;
     private String phone;
     private List<Announce> announceList;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private City city;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Category category;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User user;
 }
