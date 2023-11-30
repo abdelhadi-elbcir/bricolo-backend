@@ -58,11 +58,9 @@ public class RattingServiceImpl implements RattingService {
 
     @Override
     public List<RattingDto> getList() {
-        List<Ratting> rattingList = rattingRepository.findAll();
-        List<RattingDto> rattingDtoList = new ArrayList<>();
-        for (Ratting ratting : rattingList)
-            if(ratting != null)
-                rattingDtoList.add(rattingMapper.toDto(ratting));
+        rattingMapper.getUserMapper().setRatting(false);
+        List<RattingDto> rattingDtoList = rattingMapper.toDto(rattingRepository.findAll());
+        rattingMapper.getUserMapper().setRatting(true);
         return rattingDtoList;
     }
 }

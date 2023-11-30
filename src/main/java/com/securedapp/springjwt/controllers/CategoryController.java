@@ -1,7 +1,6 @@
 package com.securedapp.springjwt.controllers;
 
 import com.securedapp.springjwt.dto.CategoryDto;
-import com.securedapp.springjwt.services.impl.BlogServiceImpl;
 import com.securedapp.springjwt.services.impl.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

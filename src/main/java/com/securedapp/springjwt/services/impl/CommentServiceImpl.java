@@ -58,11 +58,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<CommentDto> getList() {
-        List<Comment> commentList = commentRepository.findAll();
-        List<CommentDto> commentDtoList = new ArrayList<>();
-        for (Comment comment : commentList)
-            if(comment != null)
-                commentDtoList.add(commentMapper.toDto(comment));
+        commentMapper.getUserMapper().setComment(false);
+        List<CommentDto> commentDtoList = commentMapper.toDto(commentRepository.findAll());
+        commentMapper.getUserMapper().setComment(true);
         return commentDtoList;
     }
 }

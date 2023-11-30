@@ -9,5 +9,5 @@ import lombok.*;
 @NoArgsConstructor
 public class CommentDto {
     private String Text;
-    private User user;
+    private UserDto userDto;
 }

@@ -29,9 +29,10 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public MessageDto update(MessageDto messageDto, Long id) {
+        Message message = messageMapper.toEntity(messageDto);
         Message messageToUpdate = messageRepository.findById(id).orElse(null);
         if(messageToUpdate != null){
-            messageToUpdate.setText(messageDto.getText());
+            messageToUpdate.setText(message.getText());
             messageRepository.save(messageToUpdate);
             return  messageMapper.toDto(messageToUpdate);
         }
@@ -57,11 +58,9 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<MessageDto> getList() {
-        List<Message> messageList = messageRepository.findAll();
-        List<MessageDto> messageDtoList = new ArrayList<>();
-        for (Message message : messageList)
-            if(message!=null)
-                messageDtoList.add(messageMapper.toDto(message));
+        messageMapper.getUserMapper().setMessage(false);
+        List<MessageDto> messageDtoList = messageMapper.toDto(messageRepository.findAll());
+        messageMapper.getUserMapper().setMessage(true);
         return messageDtoList;
     }
 }

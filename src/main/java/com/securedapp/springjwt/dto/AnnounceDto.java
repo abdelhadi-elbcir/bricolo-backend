@@ -13,11 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnnounceDto {
-
     private String title;
     private String body;
     private String image;
-    private Service service;
-    private Category category;
-
+    private ServiceDto serviceDto;
+    private CategoryDto categoryDto;
 }

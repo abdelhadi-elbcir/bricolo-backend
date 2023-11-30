@@ -2,6 +2,7 @@ package com.securedapp.springjwt.mappers;
 
 import com.securedapp.springjwt.dto.FavoriteDto;
 import com.securedapp.springjwt.models.Favorite;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +16,6 @@ public class FavoriteMapper {
 
     public Favorite toEntity(FavoriteDto favoriteDto){
         Favorite favorite = new Favorite();
-
         return  favorite;
     }
 }

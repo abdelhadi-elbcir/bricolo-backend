@@ -2,7 +2,6 @@ package com.securedapp.springjwt.dto;
 
 
 
-import com.securedapp.springjwt.models.*;
 import lombok.*;
 
 import java.util.List;
@@ -22,10 +21,10 @@ public class UserDto {
   private String image;
   private String firstname;
   private String lastname;
-  private List<Blog> blogList;
-  private List<Comment> commentList;
-  private List<Message> messageList;
-  private List<Ratting> rattingList;
-  private List<Service> servicesList;
+  private List<BlogDto> blogList;
+  private List<CommentDto> commentList;
+  private List<MessageDto> messageList;
+  private List<RattingDto> rattingList;
+  private List<ServiceDto> servicesList;
 
 }

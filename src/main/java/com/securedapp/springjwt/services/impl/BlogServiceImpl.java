@@ -7,8 +7,6 @@ import com.securedapp.springjwt.repository.BlogRepository;
 import com.securedapp.springjwt.services.facade.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,11 +28,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogDto update(BlogDto blogDto, Long id) {
+       Blog blog = blogMapper.toEntity(blogDto);
        Blog blogToUpdate =  blogRepository.findById(id).orElse(null);
        if(blogToUpdate != null){
-           blogToUpdate.setBody(blogDto.getBody());
-           blogToUpdate.setImage(blogDto.getImage());
-           blogToUpdate.setTitle(blogDto.getTitle());
+           blogToUpdate.setBody(blog.getBody());
+           blogToUpdate.setImage(blog.getImage());
+           blogToUpdate.setTitle(blog.getTitle());
            blogRepository.save(blogToUpdate);
            return  blogMapper.toDto(blogToUpdate);
        }
@@ -60,13 +59,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogDto> getList() {
-        List<Blog> blogList = blogRepository.findAll();
-        List<BlogDto> blogDtoList = new ArrayList<>();
-        for (Blog blog:
-             blogList) {
-            if(blog != null)
-                blogDtoList.add(blogMapper.toDto(blog));
-        }
+        blogMapper.getUserMapper().setBlog(false);
+        List<BlogDto> blogDtoList = blogMapper.toDto(blogRepository.findAll());
+        blogMapper.getUserMapper().setBlog(true);
         return blogDtoList;
     }
 }

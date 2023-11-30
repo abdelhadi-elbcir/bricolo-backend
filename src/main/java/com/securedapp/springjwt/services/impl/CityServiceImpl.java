@@ -2,6 +2,7 @@ package com.securedapp.springjwt.services.impl;
 
 import com.securedapp.springjwt.dto.CityDto;
 import com.securedapp.springjwt.mappers.CityMapper;
+import com.securedapp.springjwt.mappers.ServiceMapper;
 import com.securedapp.springjwt.models.City;
 import com.securedapp.springjwt.repository.CityRepository;
 import com.securedapp.springjwt.services.facade.CityService;
@@ -19,6 +20,9 @@ public class CityServiceImpl implements CityService {
     @Autowired
     private CityMapper cityMapper;
 
+    @Autowired
+    private ServiceMapper serviceMapper;
+
     @Override
     public CityDto create(CityDto cityDto) {
         if(cityDto != null){
@@ -30,12 +34,13 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public CityDto update(CityDto cityDto, Long id) {
-        City city = cityRepository.findById(id).orElse(null);
-        if(city != null){
-            city.setName(cityDto.getName());
-            city.setServiceList(cityDto.getServiceList());
-            cityRepository.save(city);
-            return  cityMapper.toDto(city);
+        City city = cityMapper.toEntity(cityDto);
+        City cityFounded = cityRepository.findById(id).orElse(null);
+        if(cityFounded != null){
+            cityFounded.setName(city.getName());
+            cityFounded.setServiceList(city.getServiceList());
+            cityRepository.save(cityFounded);
+            return  cityMapper.toDto(cityFounded);
         }
         return  null;
     }
@@ -59,13 +64,9 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<CityDto> getList() {
-        List<City> cityList = cityRepository.findAll();
-        List<CityDto> cityDtoList = new ArrayList<>();
-        for (City city:
-             cityList) {
-            if(city != null)
-              cityDtoList.add(cityMapper.toDto(city));
-        }
+        cityMapper.getServiceMapper().setCity(false);
+        List<CityDto> cityDtoList = cityMapper.toDto(cityRepository.findAll());
+        cityMapper.getServiceMapper().setCity(true);
         return  cityDtoList;
     }
 }

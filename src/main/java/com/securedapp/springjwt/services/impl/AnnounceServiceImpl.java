@@ -30,15 +30,16 @@ public class AnnounceServiceImpl implements AnnounceService {
 
     @Override
     public AnnounceDto update(AnnounceDto announceDto, Long id) {
-        Announce announce = announceRepository.findById(id).orElse(null);
-        if(announce != null){
-            announce.setTitle(announceDto.getTitle());
-            announce.setBody(announceDto.getBody());
-            announce.setImage(announceDto.getImage());
-            announce.setCategory(announceDto.getCategory());
-            announce.setService(announceDto.getService());
-            announceRepository.save(announce);
-            return  announceMapper.toDto(announce);
+        Announce announce = announceMapper.toEntity(announceDto);
+        Announce announceFounded = announceRepository.findById(id).orElse(null);
+        if(announceFounded != null){
+            announceFounded.setTitle(announce .getTitle());
+            announceFounded.setBody(announce .getBody());
+            announceFounded.setImage(announce .getImage());
+            announceFounded.setCategory(announce .getCategory());
+            announceFounded.setService(announce .getService());
+            announceRepository.save(announceFounded);
+            return  announceMapper.toDto(announceFounded);
         }
         return  null;
     }
@@ -58,11 +59,11 @@ public class AnnounceServiceImpl implements AnnounceService {
 
     @Override
     public List<AnnounceDto> getList() {
-        List<Announce> announceList = announceRepository.findAll();
-        List<AnnounceDto> announceDtoList = new ArrayList<>();
-        for (Announce announce : announceList)
-            if(announce != null)
-                announceDtoList.add(announceMapper.toDto(announce));
+        announceMapper.getServiceMapper().setAnnounce(false);
+        announceMapper.getCategoryMapper().setAnnounce(false);
+        List<AnnounceDto> announceDtoList = announceMapper.toDto(announceRepository.findAll());
+        announceMapper.getServiceMapper().setAnnounce(true);
+        announceMapper.getCategoryMapper().setAnnounce(true);
         return  announceDtoList;
     }
 }

@@ -8,5 +8,5 @@ import lombok.*;
 @NoArgsConstructor
 public class MessageDto {
     private Long text;
-    private User user;
+    private UserDto userDto;
 }

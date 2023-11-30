@@ -8,5 +8,5 @@ import lombok.*;
 @NoArgsConstructor
 public class RattingDto {
     private int stars;
-    private User user;
+    private UserDto userDto;
 }

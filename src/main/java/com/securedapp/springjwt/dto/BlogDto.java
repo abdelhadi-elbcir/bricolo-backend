@@ -10,5 +10,5 @@ public class BlogDto {
     private String title;
     private String body;
     private String image;
-    private User user;
+    private UserDto userDto;
 }

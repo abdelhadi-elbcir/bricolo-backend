@@ -18,11 +18,8 @@ public class ServiceDto {
     private String description;
     private String image;
     private String phone;
-    private List<Announce> announceList;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private City city;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Category category;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private User user;
+    private List<AnnounceDto> announceList;
+    private CityDto cityDto;
+    private CategoryDto categoryDto;
+    private UserDto userDto;
 }

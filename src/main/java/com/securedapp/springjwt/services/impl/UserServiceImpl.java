@@ -7,8 +7,6 @@ import com.securedapp.springjwt.repository.UserRepository;
 import com.securedapp.springjwt.services.facade.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,18 +24,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto update(UserDto userDto, Long id) {
-        User user = userRepository.findById(id).orElse(null);
-        if(user != null){
-            user.setFirstname(userDto.getFirstname());
-            user.setLastname(userDto.getLastname());
-            user.setAbout(userDto.getAbout());
-            user.setAddress(userDto.getAddress());
-            user.setFacebook(userDto.getFacebook());
-            user.setYoutube(user.getYoutube());
-            user.setInstagram(userDto.getInstagram());
-            user.setLinkedin(userDto.getLinkedin());
-            userRepository.save(user);
-            return userMapper.toDto(user);
+        User user = userMapper.toEntity(userDto);
+        User userFounded = userRepository.findById(id).orElse(null);
+        if(userFounded != null){
+            userFounded.setFirstname(user.getFirstname());
+            userFounded.setLastname(user.getLastname());
+            userFounded.setAbout(user.getAbout());
+            userFounded.setAddress(user.getAddress());
+            userFounded.setFacebook(user.getFacebook());
+            userFounded.setYoutube(user.getYoutube());
+            userFounded.setInstagram(user.getInstagram());
+            userFounded.setLinkedin(user.getLinkedin());
+            userRepository.save(userFounded);
+            return userMapper.toDto(userFounded);
         }
         return null;
     }
@@ -57,11 +56,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getList() {
-        List<User> userList = userRepository.findAll();
-        List<UserDto> userDtoList = new ArrayList<>();
-        for (User user : userList)
-            if(user != null)
-                userDtoList.add(userMapper.toDto(user));
-        return userDtoList;
+        userMapper.getBlogMapper().setUser(false);
+        userMapper.getMessageMapper().setUser(false);
+        userMapper.getServiceMapper().setUser(false);
+        userMapper.getBlogMapper().setUser(false);
+        userMapper.getRattingMapper().setUser(false);
+        List<UserDto> userDtoList = userMapper.toDto(userRepository.findAll());
+        userMapper.getBlogMapper().setUser(true);
+        userMapper.getMessageMapper().setUser(true);
+        userMapper.getServiceMapper().setUser(true);
+        userMapper.getBlogMapper().setUser(true);
+        userMapper.getRattingMapper().setUser(true);
+        return  userDtoList;
     }
+
 }

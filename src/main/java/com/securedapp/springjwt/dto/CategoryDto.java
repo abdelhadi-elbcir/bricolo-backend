@@ -15,8 +15,6 @@ import java.util.List;
 public class CategoryDto {
     private Long id;
     private String name;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Service> serviceList;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Announce> announceList;
+    private List<ServiceDto> serviceList;
+    private List<AnnounceDto> announceList;
 }

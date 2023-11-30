@@ -6,7 +6,6 @@ import com.securedapp.springjwt.models.Service;
 import com.securedapp.springjwt.repository.ServiceRepository;
 import com.securedapp.springjwt.services.facade.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,19 +28,20 @@ public class ServiceServiceImpl implements ServiceService {
 
     @Override
     public ServiceDto update(ServiceDto serviceDto, Long id) {
-        Service service = serviceRepository.findById(id).orElse(null);
-        if(service != null){
-            service.setCategory(serviceDto.getCategory());
-            service.setCity(serviceDto.getCity());
-            service.setAnnounceList(serviceDto.getAnnounceList());
-            service.setDescription(serviceDto.getDescription());
-            service.setImage(serviceDto.getImage());
-            service.setPhone(serviceDto.getPhone());
-            service.setPrice(serviceDto.getPrice());
-            service.setTitle(serviceDto.getTitle());
-            service.setUser(serviceDto.getUser());
-            serviceRepository.save(service);
-            return serviceMapper.toDto(service);
+        Service service = serviceMapper.toEntity(serviceDto);
+        Service serviceFounded = serviceRepository.findById(id).orElse(null);
+        if(serviceFounded != null){
+            serviceFounded.setCategory(service.getCategory());
+            serviceFounded.setCity(service.getCity());
+            serviceFounded.setAnnounceList(service.getAnnounceList());
+            serviceFounded.setDescription(service.getDescription());
+            serviceFounded.setImage(service.getImage());
+            serviceFounded.setPhone(service.getPhone());
+            serviceFounded.setPrice(service.getPrice());
+            serviceFounded.setTitle(service.getTitle());
+            serviceFounded.setUser(service.getUser());
+            serviceRepository.save(serviceFounded);
+            return serviceMapper.toDto(serviceFounded);
         }
         return  null;
     }
@@ -64,11 +64,13 @@ public class ServiceServiceImpl implements ServiceService {
 
     @Override
     public List<ServiceDto> getList() {
-        List<Service> serviceList = serviceRepository.findAll();
-        List<ServiceDto> serviceDtoList = new ArrayList<>();
-        for (Service service : serviceList)
-            if(service != null)
-                serviceDtoList.add(serviceMapper.toDto(service));
-        return  serviceDtoList;
+        serviceMapper.getCityMapper().setService(false);
+        serviceMapper.getUserMapper().setService(false);
+        serviceMapper.getCategoryMapper().setService(false);
+        List<ServiceDto> serviceDtoList = serviceMapper.toDto(serviceRepository.findAll());
+        serviceMapper.getCityMapper().setService(true);
+        serviceMapper.getUserMapper().setService(true);
+        serviceMapper.getCategoryMapper().setService(true);
+        return serviceDtoList;
     }
 }
